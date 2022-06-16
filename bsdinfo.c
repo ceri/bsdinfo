@@ -46,7 +46,6 @@
 int main()
 {
     int i, proc_count = 0;
-    char *cuname;
     char buf[_POSIX2_LINE_MAX];
     const char *execf, *coref;
     static kvm_t *kd;
