@@ -46,10 +46,10 @@ int psysctl(char *name)
 int printval(char *val, char *name) 
 {
     printf("\033[1;31m%s:\033[0;0m ", val);
-    psysctl(name);
+    return(psysctl(name));
 }
 
-int printuptime() 
+void printuptime() 
 {
     struct timespec tp;
     time_t uptime;
