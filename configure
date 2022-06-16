@@ -6,7 +6,7 @@ genMakefile() {
 
 _prefix=/usr/local;
 _binsrc='bsdinfo.c';
-_cc='gcc';
+_cc='cc';
 for opt in "$@"; do
 	baseopt=$(echo "$opt" |sed -e 's/=/ /');
 	optname=$(echo "$baseopt" |awk '{print $1}');
