@@ -70,7 +70,7 @@ int main()
     printf("\033[1;31m  .-                  ::/sy+:.\033[0;0m       "); printf("\033[1;31mProcesses:\033[0;0m %d\n", proc_count);
     printf("\033[1;31m  /                     `--  /\033[0;0m       "); printmem(); printf("\n");
     printf("\033[1;31m `:                          :`\033[0;0m      "); printcpu();  printf("\n");
-    printf("\033[1;31m `:                          :`\033[0;0m      "); printf("\033[1;31mShell:\033[0;0m ", proc_count); printshell(); printf("\n");
+    printf("\033[1;31m `:                          :`\033[0;0m      "); printf("\033[1;31mShell:\033[0;0m "); printshell(); printf("\n");
     printf("\033[1;31m  /                          /\033[0;0m       \n");
     printf("\033[1;31m  .-                        -.\033[0;0m       \n");
     printf("\033[1;31m   --                      -.\033[0;0m        \n");
