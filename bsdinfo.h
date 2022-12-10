@@ -83,7 +83,7 @@ int printshell()
     char* shell = getenv("SHELL");
     if (shell != NULL) {
         int slen = strlen(shell);
-        for (slen; slen > 0; --slen) if (shell[slen] == '/') break;
+        for (; slen > 0; --slen) if (shell[slen] == '/') break;
         slen = slen+1;
         while(shell[slen] != '\0') {
             printf("%c", shell[slen]);
@@ -128,9 +128,9 @@ int printmem()
 
 int printrmws(char *str) {
     short int space = 0;
-    int i = 0;
+    int i;
     int s = strlen(str);
-    for (i; i < s; ++i) {
+    for (i = 0; i < s; ++i) {
         if (str[i] != ' ') space = 0;
         if (space == 0) printf("%c", str[i]);
         if (str[i] == ' ') space = 1;
