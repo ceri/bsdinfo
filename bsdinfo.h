@@ -119,8 +119,8 @@ int printmem()
 
     ram_free = ram_size - ram_free;
     
-    printf("%dM / ", ram_free);
-    printf("%dM", ram_size);
+    printf("%liM / ", ram_free);
+    printf("%liM", ram_size);
     
     return (0);
     
