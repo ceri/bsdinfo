@@ -8,7 +8,7 @@ target all:
 	${CC} -lkvm -lc ${CFLAGS} -DNO_XTERM bsdinfo.c utils.c -o bsdinfon
 
 install: all
-	${INSTALL} -d -m 0755 ${DESTDIR}
+	${INSTALL} -d -m 0755 ${DESTDIR}/bin
 	${INSTALL_EXEC} bsdinfo ${DESTDIR}/bin/bsdinfo
 	${INSTALL_EXEC} bsdinfon ${DESTDIR}/bin/bsdinfon
 
