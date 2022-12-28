@@ -185,6 +185,6 @@ int printbootmethod()
 void usage()
 {
     fprintf(stderr, "%s\n",
-	"usage: bsdinfo [-s] ");
+	"usage: bsdinfo [-nsx]");
     exit(EX_USAGE);
 }

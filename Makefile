@@ -4,16 +4,16 @@ CC=	cc
 
 target all:
 	${CC} -lkvm -lc ${CFLAGS} bsdinfo.c utils.c -o bsdinfo
-	${CC} -lkvm -lc ${CFLAGS} -DXTERM bsdinfo.c utils.c -o bsdinfox
+	${CC} -lkvm -lc ${CFLAGS} -DNO_XTERM bsdinfo.c utils.c -o bsdinfon
 
-install:
+install: all
 	${INSTALL_EXEC} bsdinfo /usr/local/bin/bsdinfo
-	${INSTALL_EXEC} bsdinfox /usr/local/bin/bsdinfox
+	${INSTALL_EXEC} bsdinfon /usr/local/bin/bsdinfon
 
 deinstall:
-	rm /usr/local/bin/bsdinfo
-	rm /usr/local/bin/bsdinfox
+	rm -f /usr/local/bin/bsdinfo
+	rm -f /usr/local/bin/bsdinfon
 
 clean:
 	rm -rf bsdinfo
-	rm -rf bsdinfox
+	rm -rf bsdinfon

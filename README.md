@@ -1,39 +1,26 @@
-<h1>bsdinfo</h1>
+# bsdinfo
 
-<h2>Description</h2>
-<p>This is my FreeBSD attempt to implement archey-like terminal system information display utility. It is just an esthetic way to display system information. Right now it doesn't have any configurable options (different themes, switches to change behaviour, etc), but I will add such features in the future, perhaps.</p>
+## Description
+My attempt at adding options to the original [bsdinfo](https://github.com/samupl/bsdinfo)
+to add an option that I wanted, namely not to print the shell info and
+to avoid printing empty boot method stuff.
 
-<br />
-<h2>Installation</h2>
+## Installation
 
-<p>To install the script, simply run:</p>
+To build the program, simply run:
 
-<pre>
     make
-</pre>
 
-<p>To build xterm-256 color version, type:</p>
+The xterm-256 colour version is now default; if you want a non-colour
+version then you can run `bsdinfon` or add the `-n` flag:
 
-<pre>
-    make xterm-256
-</pre>
+    bsdinfo -n
 
-<p>To install the binary:</p>
+To install the binaries:
 
-<pre>
-	make install
-</pre>
+    make install
 
-<p>You will need to have root permissions, to run `make install`, as it requires write access to /usr/local/bin. The binary will be installed at /usr/local/bin/bsdinfo.</p>
+You will need to have root permissions, to run `make install`, as it
+requires write access to /usr/local/bin. The binaries will be installed at
+`/usr/local/bin/bsdinfo` and `/usr/local/bin/bsdinfon`.
 
-<p>Please remember, that you should have the TERM environment variable set to 'xterm-256color', and you should have a 256-color capable terminal emulator to run the 256 color version, which is also a bit wider than the standard version.</p>
-
-<h2>Screenshot</h2>
-
-<p>Normal build:</p>
-
-<img src="https://github.com/samaelszafran/bsdinfo/raw/master/screenshot.png" />
-
-<p>And the xterm-256 version:</p>
-
-<img src="https://github.com/samaelszafran/bsdinfo/raw/master/screenshot256.png" />

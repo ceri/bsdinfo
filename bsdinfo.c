@@ -46,7 +46,7 @@
 
 int main(int argc, char *argv[])
 {
-    int i, proc_count = 0, sflag = 0;
+    int i, proc_count = 0, nflag, sflag = 0, xflag;
     int ch;
     char buf[_POSIX2_LINE_MAX];
     const char *execf, *coref;
@@ -60,12 +60,24 @@ int main(int argc, char *argv[])
     kd = kvm_openfiles(execf, coref, NULL, O_RDONLY, buf);
     plist = kvm_getprocs(kd, KERN_PROC_PROC, 0, &nproc);
 
+#ifdef NO_XTERM
+    nflag = 1, xflag = 0;
+#else
+    nflag = 0, xflag = 1;
+#endif
+
     for (i = 0, kp = plist; i < nproc; i++, kp++) proc_count++;
 
-    while ((ch = getopt(argc, argv, "s")) != -1)
+    while ((ch = getopt(argc, argv, "nsx")) != -1)
       switch (ch) {
+	case 'n':
+	  nflag = 1, xflag = 0;
+	  break;
 	case 's':
 	  sflag = 1;
+	  break;
+	case 'x':
+	  nflag = 0, xflag = 1;
 	  break;
 	default:
 	  usage();
@@ -75,26 +87,27 @@ int main(int argc, char *argv[])
       argv += optind;
     
     printf("\n");
-    printf(LINE1 ); printf("\n");
-    printf(LINE2 ); printval("OS", "kern.ostype"); printf(" "); psysctl("hw.machine_arch"); printf("\n");
-    printf(LINE3 ); printval("Hostname", "kern.hostname");  printf("\n");
-    printf(LINE4 ); printval("Kernel", "kern.osrelease");  printf("\n");
-    printf(LINE5 ); printuptime(); printf("\n");
-    printf(LINE6 ); printf("\033[1;31mProcesses:\033[0;0m %d\n", proc_count);
-    printf(LINE7 ); printmem(); printf("\n");
-    printf(LINE8 ); printcpu(); printf("\n");
-    printf(LINE9 ); printshell(sflag); printf("\n");
-    printf(LINE10); printbootmethod(); printf("\n");
-    printf(LINE11); printf("\n");
-    printf(LINE12); printf("\n");
-    printf(LINE13); printf("\n");
-    printf(LINE14); printf("\n");
-    printf(LINE15); printf("\n");
-#ifdef XTERM
-    printf(LINE16); printf("\n");
-    printf(LINE17); printf("\n");
-    printf(LINE18); printf("\n");
-#endif
+    printf(xflag? XLINE1 :NLINE1 ); printf("\n");
+    printf(xflag? XLINE2 :NLINE2 );
+	printval("OS", "kern.ostype"); printf(" "); psysctl("hw.machine_arch"); printf("\n");
+    printf(xflag? XLINE3 :NLINE3 ); printval("Hostname", "kern.hostname");  printf("\n");
+    printf(xflag? XLINE4 :NLINE5 ); printval("Kernel", "kern.osrelease");  printf("\n");
+    printf(xflag? XLINE5 :NLINE5 ); printuptime(); printf("\n");
+    printf(xflag? XLINE6 :NLINE6 ); printf("\033[1;31mProcesses:\033[0;0m %d\n", proc_count);
+    printf(xflag? XLINE7 :NLINE7 ); printmem(); printf("\n");
+    printf(xflag? XLINE8 :NLINE8 ); printcpu(); printf("\n");
+    printf(xflag? XLINE9 :NLINE9 ); printshell(sflag); printf("\n");
+    printf(xflag? XLINE10:NLINE10); printbootmethod(); printf("\n");
+    printf(xflag? XLINE11:NLINE11); printf("\n");
+    printf(xflag? XLINE12:NLINE12); printf("\n");
+    printf(xflag? XLINE13:NLINE13); printf("\n");
+    printf(xflag? XLINE14:NLINE14); printf("\n");
+    printf(xflag? XLINE15:NLINE15); printf("\n");
+    if (xflag) {
+      printf(XLINE16); printf("\n");
+      printf(XLINE17); printf("\n");
+      printf(XLINE18); printf("\n");
+    }
     printf("\n");
     return (0);
 }
