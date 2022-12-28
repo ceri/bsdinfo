@@ -25,6 +25,7 @@
  *
  */
 
+#include <sysexits.h>
 
 #define O_RDONLY 0x0000
 #define _POSIX2_LINE_MAX 2048
@@ -78,8 +79,12 @@ void printuptime()
     }
 }
 
-int printshell()
+int printshell(int skip)
 {
+    /* -s skips this */
+    if (skip == 1)
+      return(0);
+
     printf("\033[1;31mShell:\033[0;0m ");
     char* shell = getenv("SHELL");
     if (shell != NULL) {
@@ -164,4 +169,11 @@ int printbootmethod()
     printf("\033[1;31mBootmethod:\033[0;0m ");
     printrmws(buf);
     return (0);
+}
+
+void usage()
+{
+    fprintf(stderr, "%s\n",
+	"usage: bsdinfo [-s] ");
+    exit(EX_USAGE);
 }

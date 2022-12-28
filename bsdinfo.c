@@ -44,9 +44,10 @@
 #include "bsdinfo.h"
 #include "daemon.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-    int i, proc_count = 0;
+    int i, proc_count = 0, sflag = 0;
+    int ch;
     char buf[_POSIX2_LINE_MAX];
     const char *execf, *coref;
     static kvm_t *kd;
@@ -60,6 +61,18 @@ int main()
     plist = kvm_getprocs(kd, KERN_PROC_PROC, 0, &nproc);
 
     for (i = 0, kp = plist; i < nproc; i++, kp++) proc_count++;
+
+    while ((ch = getopt(argc, argv, "s")) != -1)
+      switch (ch) {
+	case 's':
+	  sflag = 1;
+	  break;
+	default:
+	  usage();
+	  break;
+	}
+      argc -= optind;
+      argv += optind;
     
     printf("\n");
     printf(LINE1 ); printf("\n");
@@ -70,7 +83,7 @@ int main()
     printf(LINE6 ); printf("\033[1;31mProcesses:\033[0;0m %d\n", proc_count);
     printf(LINE7 ); printmem(); printf("\n");
     printf(LINE8 ); printcpu(); printf("\n");
-    printf(LINE9 ); printshell(); printf("\n");
+    printf(LINE9 ); printshell(sflag); printf("\n");
     printf(LINE10); printbootmethod(); printf("\n");
     printf(LINE11); printf("\n");
     printf(LINE12); printf("\n");
