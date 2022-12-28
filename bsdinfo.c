@@ -42,6 +42,7 @@
 #include <sys/user.h>
 
 #include "bsdinfo.h"
+#include "daemon.h"
 
 int main()
 {
@@ -61,21 +62,26 @@ int main()
     for (i = 0, kp = plist; i < nproc; i++, kp++) proc_count++;
     
     printf("\n");
-    printf("\033[1;31m  ```                        `\033[0;0m       \n");
-    printf("\033[1;31m s` `.....---.......--.```   -/\033[0;0m      "); printval("OS", "kern.ostype"); printf(" "); psysctl("hw.machine_arch"); printf("\n");
-    printf("\033[1;31m +o   .--`         /y:`      +.\033[0;0m      "); printval("Hostname", "kern.hostname");  printf("\n");
-    printf("\033[1;31m  yo`:.            :o      `+-\033[0;0m       "); printval("Kernel", "kern.osrelease");  printf("\n");
-    printf("\033[1;31m   y/               -/`   -o/\033[0;0m        "); printuptime(); printf("\n");
-    printf("\033[1;31m  .-                  ::/sy+:.\033[0;0m       "); printf("\033[1;31mProcesses:\033[0;0m %d\n", proc_count);
-    printf("\033[1;31m  /                     `--  /\033[0;0m       "); printmem(); printf("\n");
-    printf("\033[1;31m `:                          :`\033[0;0m      "); printcpu();  printf("\n");
-    printf("\033[1;31m `:                          :`\033[0;0m      "); printf("\033[1;31mShell:\033[0;0m "); printshell(); printf("\n");
-    printf("\033[1;31m  /                          /\033[0;0m       \n");
-    printf("\033[1;31m  .-                        -.\033[0;0m       \n");
-    printf("\033[1;31m   --                      -.\033[0;0m        \n");
-    printf("\033[1;31m    `:`                  `:`\033[0;0m         \n");
-    printf("\033[1;31m      .--             `--.\033[0;0m           \n");
-    printf("\033[1;31m         .---.....----.\033[0;0m              \n");
+    printf(LINE1 ); printf("\n");
+    printf(LINE2 ); printval("OS", "kern.ostype"); printf(" "); psysctl("hw.machine_arch"); printf("\n");
+    printf(LINE3 ); printval("Hostname", "kern.hostname");  printf("\n");
+    printf(LINE4 ); printval("Kernel", "kern.osrelease");  printf("\n");
+    printf(LINE5 ); printuptime(); printf("\n");
+    printf(LINE6 ); printf("\033[1;31mProcesses:\033[0;0m %d\n", proc_count);
+    printf(LINE7 ); printmem(); printf("\n");
+    printf(LINE8 ); printcpu(); printf("\n");
+    printf(LINE9 ); printshell(); printf("\n");
+    printf(LINE10); printbootmethod(); printf("\n");
+    printf(LINE11); printf("\n");
+    printf(LINE12); printf("\n");
+    printf(LINE13); printf("\n");
+    printf(LINE14); printf("\n");
+    printf(LINE15); printf("\n");
+#ifdef XTERM
+    printf(LINE16); printf("\n");
+    printf(LINE17); printf("\n");
+    printf(LINE18); printf("\n");
+#endif
     printf("\n");
     return (0);
 }

@@ -80,6 +80,7 @@ void printuptime()
 
 int printshell()
 {
+    printf("\033[1;31mShell:\033[0;0m ");
     char* shell = getenv("SHELL");
     if (shell != NULL) {
         int slen = strlen(shell);
@@ -154,13 +155,13 @@ int printcpu()
 
 int printbootmethod()
 {
-    printf("\033[1;31mBootmethod:\033[0;0m ");
     char buf[256];
     size_t size = sizeof(buf);
 
     if (sysctlbyname("machdep.bootmethod", &buf, &size, NULL, 0) != 0) {
         return (1);
     }
+    printf("\033[1;31mBootmethod:\033[0;0m ");
     printrmws(buf);
     return (0);
 }
