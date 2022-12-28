@@ -1,5 +1,5 @@
 INSTALL=	install
-INSTALL_EXEC=	$(INSTALL) -m 0755
+INSTALL_EXEC=	$(INSTALL) -d -m 0755
 CC=	cc
 DESTDIR?=	/usr/local
 
