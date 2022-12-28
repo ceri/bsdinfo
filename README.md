@@ -20,7 +20,7 @@ To install the binaries:
 
     make install
 
-You will need to have root permissions, to run `make install`, as it
+You will need to have root permissions to run `make install`, as it
 requires write access to /usr/local/bin. The binaries will be installed at
 `/usr/local/bin/bsdinfo` and `/usr/local/bin/bsdinfon`.
 
