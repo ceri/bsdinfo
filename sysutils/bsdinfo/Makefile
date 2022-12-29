@@ -11,7 +11,7 @@ LICENSE=	BSD2CLAUSE
 USE_GITHUB=	yes
 GH_ACCOUNT=	ceri
 GH_PROJECT=	bsdinfo
-GH_TAGNAME=	cdc15b9
+GH_TAGNAME=	d355dad
 
 PLIST_FILES=	bin/bsdinfo \
 		bin/bsdinfon
