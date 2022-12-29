@@ -1,5 +1,5 @@
 INSTALL?=	install
-INSTALL_EXEC?=	$(INSTALL) -m 0755
+INSTALL_PROGRAM?=	$(INSTALL) -m 0755
 CC?=	cc
 PREFIX?=	/usr/local
 DESTDIR?=	
@@ -10,8 +10,8 @@ target all:
 
 install: all
 	${INSTALL} -d -m 0755 ${DESTDIR}/${PREFIX}/bin
-	${INSTALL_EXEC} bsdinfo ${DESTDIR}/${PREFIX}/bin/bsdinfo
-	${INSTALL_EXEC} bsdinfon ${DESTDIR}/${PREFIX}/bin/bsdinfon
+	${INSTALL_PROGRAM} bsdinfo ${DESTDIR}/${PREFIX}/bin/bsdinfo
+	${INSTALL_PROGRAM} bsdinfon ${DESTDIR}/${PREFIX}/bin/bsdinfon
 
 deinstall:
 	rm -f ${DESTDIR}/${PREFIX}/bin/bsdinfo
