@@ -1,30 +1,19 @@
-# New ports collection makefile for:	bsdinfo
-# Date created:        8 June 2012
-# Whom:                samu <s@samu.pl>
-#
-# $FreeBSD$
-#
-
 PORTNAME=	bsdinfo
-PORTVERSION=	0.1
+DISTVERSION=	v20221229
 CATEGORIES=	sysutils
-MASTER_SITES=	http://cloud.github.com/downloads/samaelszafran/bsdinfo/
 
 MAINTAINER=	s@samu.pl
-COMMENT=	A simple utility to display system-based information
+COMMENT=	Simple utility to display system-based information
+WWW=		https://github.com/ceri/bsdinfo
 
-MAN1=		bsdinfo.1
-MANCOMPRESSED=	yes
+LICENSE=	BSD2CLAUSE
 
-GNU_CONFIGURE=	yes
+USE_GITHUB=	yes
+GH_ACCOUNT=	ceri
+GH_PROJECT=	bsdinfo
+GH_TAGNAME=	cdc15b9
 
-OPTIONS=        X256 "Build 256 color version" Off
-
-.if !defined(WITH_X256)
-CONFIGURE_ARGS+=--xterm-256
-
-.endif
-
-.include <bsd.port.options.mk>
+PLIST_FILES=	bin/bsdinfo \
+		bin/bsdinfon
 
 .include <bsd.port.mk>
