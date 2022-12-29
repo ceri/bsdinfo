@@ -10,12 +10,15 @@ target all:
 
 install: all
 	${INSTALL} -d -m 0755 ${DESTDIR}/${PREFIX}/bin
+	${INSTALL} -d -m 0755 ${DESTDIR}/${PREFIX}/man/man1
 	${INSTALL_PROGRAM} bsdinfo ${DESTDIR}/${PREFIX}/bin/bsdinfo
 	${INSTALL_PROGRAM} bsdinfon ${DESTDIR}/${PREFIX}/bin/bsdinfon
+	${INSTALL_PROGRAM} bsdinfo.1 ${DESTDIR}/${PREFIX}/man/man1/bsdinfo.1
 
 deinstall:
 	rm -f ${DESTDIR}/${PREFIX}/bin/bsdinfo
 	rm -f ${DESTDIR}/${PREFIX}/bin/bsdinfon
+	rm -f ${DESTDIR}/${PREFIX}/man/man1/bsdinfo.1
 
 clean:
 	rm -rf bsdinfo

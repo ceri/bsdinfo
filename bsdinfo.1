@@ -1,0 +1,48 @@
+.\"-
+.\" Copyright (c) 2022
+.\"	Ceri Davies, ceri@submonkey.net
+.\"	Do what you want with this.
+.\"
+.\"
+.Dd December 29, 2022
+.Dt BSDINFO 1
+.Os
+.Sh NAME
+.Nm bsdinfo
+.Nd print a .Fx logo and some information about the running system
+.Sh SYNOPSIS
+.Nm
+.Op Fl n
+.Op Fl s
+.Op Fl x
+.Sh DESCRIPTION
+The
+.Nm
+utility prints an ASCII art representation of the .Fx logo, along with
+some information about the running system.
+.Pp
+The options are as follows:
+.Bl -tag -width indent
+.It Fl n
+Print a version of the .Fx logo intended for terminals that do not
+support 256 colours.
+.It Fl s
+Do not print any information about the current user's shell.
+.It Fl x
+Print a version of the .Fx logo intended for terminals that do
+support 256 colours.
+This the default.
+.El
+.Sh HISTORY
+The
+.Nm
+utility was originally written by s@samu.pl.
+Options were added later by ceri@submonkey.net.
+.Sh BUGS
+The
+.Fl n
+and
+.Fl x
+flags should be mutually exclusive, but instead the last one given
+on the command line will take effect.
+No warning is given.
