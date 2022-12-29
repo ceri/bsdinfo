@@ -1,5 +1,6 @@
 INSTALL?=	install
 INSTALL_PROGRAM?=	$(INSTALL) -m 0755
+INSTALL_MAN?=	$(INSTALL) -m 0644
 CC?=	cc
 PREFIX?=	/usr/local
 DESTDIR?=	
@@ -13,7 +14,7 @@ install: all
 	${INSTALL} -d -m 0755 ${DESTDIR}/${PREFIX}/man/man1
 	${INSTALL_PROGRAM} bsdinfo ${DESTDIR}/${PREFIX}/bin/bsdinfo
 	${INSTALL_PROGRAM} bsdinfon ${DESTDIR}/${PREFIX}/bin/bsdinfon
-	${INSTALL_PROGRAM} bsdinfo.1 ${DESTDIR}/${PREFIX}/man/man1/bsdinfo.1
+	${INSTALL_MAN} bsdinfo.1 ${DESTDIR}/${PREFIX}/man/man1/bsdinfo.1
 
 deinstall:
 	rm -f ${DESTDIR}/${PREFIX}/bin/bsdinfo
