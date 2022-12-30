@@ -1,5 +1,5 @@
 PORTNAME=	bsdinfo
-DISTVERSION=	0.31
+DISTVERSION=	0.32
 CATEGORIES=	sysutils
 
 MAINTAINER=	s@samu.pl
@@ -11,7 +11,7 @@ LICENSE=	BSD2CLAUSE
 USE_GITHUB=	yes
 GH_ACCOUNT=	ceri
 GH_PROJECT=	bsdinfo
-GH_TAGNAME=	96e65b3
+GH_TAGNAME=	659abc7
 
 PLIST_FILES=	bin/bsdinfo \
 		bin/bsdinfon \
