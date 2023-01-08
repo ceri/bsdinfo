@@ -2,7 +2,7 @@ PORTNAME=	bsdinfo
 DISTVERSION=	0.32
 CATEGORIES=	sysutils
 
-MAINTAINER=	s@samu.pl
+MAINTAINER=	ceri@FreeBSD.org
 COMMENT=	Simple utility to display system-based information
 WWW=		https://github.com/ceri/bsdinfo
 
